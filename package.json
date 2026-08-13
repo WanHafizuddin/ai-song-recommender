@@ -1,14 +1,22 @@
 {
+  "name": "ai-song-recommender",
+  "version": "1.0.0",
+  "description": "AI mood-to-playlist recommender over a personal Postgres song catalog",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:setup": "node db/setup.js",
+    "enrich": "node scripts/enrich-songs.js"
+  },
   "dependencies": {
-    "body": "^5.1.0",
-    "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
-    "ejs": "^3.1.10",
     "express": "^4.21.2",
-    "g": "^2.0.1",
-    "pg": "^8.14.0",
-    "sass": "^1.85.1",
-    "scss": "^0.2.4",
-    "sequelize": "^6.37.6"
+    "pg": "^8.14.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0",
+    "vitest": "^2.1.0"
   }
 }

@@ -42,4 +42,21 @@ function buildCandidateQuery(criteria, limit = 30) {
   return { text, params };
 }
 
-module.exports = { buildCandidateQuery };
+const songs = require("../models/songs");
+
+async function retrieveCandidates(criteria) {
+  const attempts = [criteria];
+  if (criteria.energy !== null && criteria.energy !== undefined) {
+    attempts.push({ ...criteria, energy: null });
+  }
+  if (criteria.genre) {
+    attempts.push({ ...criteria, genre: null, energy: null });
+  }
+  for (const c of attempts) {
+    const rows = await songs.runCandidateQuery(buildCandidateQuery(c));
+    if (rows.length > 0) return rows;
+  }
+  return [];
+}
+
+module.exports = { buildCandidateQuery, retrieveCandidates };

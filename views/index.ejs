@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Favourite Song</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/playlists">Playlists</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <div class="cta-form">
+        <h2>Need a new song to vibe to. Got any recommendations?</h2>
+      </div>
+      <form action="/" method="POST" class="form" autocomplete="off">
+        <input
+          type="text"
+          placeholder="song"
+          name="song"
+          id="song"
+          class="form__input"
+        />
+        <label for="song" class="form__label">Song:</label>
+
+        <input
+          type="text"
+          placeholder="artist"
+          id="artist"
+          name="artist"
+          class="form__input"
+        />
+        <label for="artist" class="form__label">Artist:</label>
+        <label for="genre">Genre</label>
+        <select name="genre" id="genre" 
+        style="padding: 5px 10px;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;">
+          <option value="RNB">RNB</option>
+          <option value="KPOP">KPOP</option>
+          <option value="INDIE">INDIE</option>
+          <option value="FUNK">FUNK</option>
+          <option value="ROCK">ROCK</option>
+          <option value="POP">POP</option>
+          <option value="HIP-HOP">HIP-HOP</option>
+          <option value="OTHER">OTHER</option>
+        </select>
+        <button type="submit" style="
+        margin-left: 6rem;
+        padding: 10px 20px;
+        background-color: #0015ff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;">Submit</button>
+        <br />
+        <br />
+        <h6 style="text-align: center">Created by Wan Hafizuddin</h6>
+      </form>
+    </div>
+
+    <!-- <form action="/" method="POST" autocomplete="off">
+      <label for="song">Enter your favourite song:</label>
+      <input type="text" name="song"/>
+      <label for="song">Artist/band name:</label>
+      <input type="text" name="artist"/>
+      <label for="genre">Chose the genre</label>
+      <select name="genre">
+        <option value="RNB">RNB</option>
+        <option value="KPOP">KPOP</option>
+        <option value="INDIE">INDIE</option>
+        <option value="OTHER">OTHER</option>
+      </select>
+      <button type="submit">Submit</button> -->
+  </body>
+</html>

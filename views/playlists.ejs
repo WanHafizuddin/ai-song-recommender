@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/playlists" class="active">Playlists</a></li>
+      </ul>
+    </nav>
+    <section>
+      <br>
+      <h2 style="text-align: center;">Hey, someone recommend these songs!</h2>
+      <div class="container"><% if (ply.length > 0) { %>
+      <ul>
+        <% for (let playlists of ply) { %>
+        <li style="display:flex; justify-content: space-between; align-items: center;" >
+          <span><%= playlists.song + " by " + playlists.artist + "  " %></span>
+          <form action="/playlists/delete/<%= playlists.id %>" method="GET">
+            <button type="submit" style="padding: 10px 20px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;">Delete</button>
+        </form>
+        </li>
+        <br>
+        <br>
+        <% } %>
+      </ul>
+      <% } else { %>
+      <p>No lists added yet.</p>
+      <% } %>
+    </section>
+  </div>
+    
+  </body>
+</html>

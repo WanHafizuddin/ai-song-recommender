@@ -226,9 +226,10 @@ Light but real signal:
 
 ## 11. Repo cleanup (part of the upgrade)
 
-- `git rm -r --cached node_modules` + `.gitignore` (already covers
-  `node_modules/`, `.env*`, `client/dist/`). (New repo starts clean; this note
-  applies to the migration mindset.)
+- This repo starts clean: `.gitignore` already excludes `node_modules/`,
+  `.env*`, and `client/dist/` from commit 1, so nothing needs untracking here.
+  (The original `fav-songs` repo *did* track `node_modules` — a mistake this new
+  repo avoids from the start.)
 - Drop unused deps: `body`, `g`, `scss`, `sequelize` (and `sass` once
   EJS/SCSS is gone). Add `@google/generative-ai`; dev deps `vite`, `react`,
   `react-dom`, `@vitejs/plugin-react`, `vitest`, `concurrently`.
@@ -241,7 +242,7 @@ Light but real signal:
 app.js                       Express: JSON API + serves client/dist
 routes/    recommend.js  songs.js
 services/  llm.js  retrieval.js
-models/    user.js  song.js  moodQuery.js
+models/    user.js  songs.js  moodQuery.js
 db/        schema.sql  seed.sql  setup.js
 scripts/   enrich-songs.js
 client/    src/App.jsx  src/components/*  vite.config.js

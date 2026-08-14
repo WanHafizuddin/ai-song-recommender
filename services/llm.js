@@ -1,7 +1,7 @@
 const { validateCriteria } = require("./criteria");
 
 const API_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
-const CHAT_MODEL = process.env.GEMINI_CHAT_MODEL || "gemini-2.0-flash";
+const CHAT_MODEL = process.env.GEMINI_CHAT_MODEL || "gemini-3.7-flash";
 
 function apiKey() {
   const k = process.env.GEMINI_API_KEY;

@@ -86,7 +86,7 @@ songs where `enriched_at IS NULL`, so it is safe to re-run and resume.
 | ------------------- | ---------------------------------------------------------- |
 | `DATABASE_URL`      | Postgres connection string (Supabase).                     |
 | `GEMINI_API_KEY`    | Google AI Studio key (free tier).                          |
-| `GEMINI_CHAT_MODEL` | Chat model id (default `gemini-2.0-flash`).                |
+| `GEMINI_CHAT_MODEL` | Chat model id (default `gemini-3.7-flash`).                |
 | `RERANK_ENABLED`    | `false` disables the LLM rerank pass (see below).          |
 | `PORT`              | Server port (default `3000`).                              |
 
@@ -140,6 +140,21 @@ your own `.env`.
 > through one Node `require` (`createRequire`) and overwrite the dependency's
 > exported functions with spies — see any `*.test.js` for the pattern.
 
+## Frontend (React)
+
+A Vite + React SPA in [`client/`](client/) is the whole UI — a username gate, a
+mood → playlist page, and a songs catalog (add/list/delete) — styled with
+Tailwind (dark theme) and routed with React Router.
+
+- **Dev** (two servers, hot reload): `npm run dev` runs Express (`:3000`) and the
+  Vite dev server (`:5173`), which proxies `/api` to Express. Open
+  `http://localhost:5173`.
+- **Prod** (one service): `npm run build` compiles the client into `client/dist`,
+  which Express serves with an SPA fallback. Then `npm start` and open
+  `http://localhost:3000`.
+- **Frontend tests**: `npm --prefix client test` (Vitest + React Testing Library
+  on jsdom; network mocked). The backend suite (`npm test`) is separate.
+
 ## Growing the catalog
 
 Add rows (edit [`db/seed.sql`](db/seed.sql) or `POST /api/songs`), then re-run
@@ -147,8 +162,10 @@ Add rows (edit [`db/seed.sql`](db/seed.sql) or `POST /api/songs`), then re-run
 
 ## Roadmap
 
-- **React + Vite frontend** — username gate, mood page, songs page; Express
-  already serves `client/dist` with an SPA fallback.
+- ✅ **React + Vite frontend** — username gate, mood page, songs page (see
+  [Frontend](#frontend-react)).
 - **pgvector semantic search** — add an `embedding vector(768)` column and
   retrieve by cosine similarity to the embedded mood. Only the internals of
   `retrieveCandidates` change; the pipeline is untouched.
+- **Deployment** — one Render web service (build `npm run build`, start
+  `node app.js`) plus Supabase.

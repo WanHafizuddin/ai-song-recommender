@@ -7,5 +7,20 @@
 }
 
 body {
-  @apply bg-bg text-text;
+  @apply bg-ink text-chalk font-sans antialiased;
+  /* Ambient energy poles: amber top-right, cyan lower-left. */
+  background-image:
+    radial-gradient(55rem 55rem at 85% -10%, rgba(255, 122, 60, 0.07), transparent 60%),
+    radial-gradient(45rem 45rem at -10% 25%, rgba(55, 208, 196, 0.06), transparent 55%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(255, 122, 60, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-eq {
+    animation: none !important;
+  }
 }

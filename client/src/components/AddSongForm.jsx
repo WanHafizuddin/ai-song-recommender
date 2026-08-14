@@ -22,16 +22,20 @@ export default function AddSongForm({ onAdd }) {
       });
       setForm(EMPTY);
     } catch (err) {
-      setError(err.message || "Failed to add");
+      setError(err.message || "Couldn't add that song");
     }
   };
+  const field =
+    "rounded-lg border border-line bg-ink/60 px-3 py-2 text-sm text-chalk placeholder-haze/50 outline-none focus:border-ember";
   return (
-    <form onSubmit={submit} className="grid gap-3 rounded-xl border border-border bg-surface p-4 sm:grid-cols-4">
-      <input value={form.title} onChange={change("title")} placeholder="Title" className="rounded-lg border border-border bg-bg p-2 text-text placeholder-muted outline-none focus:border-accent" />
-      <input value={form.artist} onChange={change("artist")} placeholder="Artist" className="rounded-lg border border-border bg-bg p-2 text-text placeholder-muted outline-none focus:border-accent" />
-      <input value={form.genre} onChange={change("genre")} placeholder="Genre (optional)" className="rounded-lg border border-border bg-bg p-2 text-text placeholder-muted outline-none focus:border-accent" />
-      <Button type="submit">Add</Button>
-      {error && <p className="text-sm text-red-300 sm:col-span-4">{error}</p>}
+    <form onSubmit={submit} className="rounded-2xl border border-line bg-panel/60 p-4">
+      <div className="grid gap-2 sm:grid-cols-[1fr_1fr_1fr_auto]">
+        <input value={form.title} onChange={change("title")} placeholder="Title" className={field} />
+        <input value={form.artist} onChange={change("artist")} placeholder="Artist" className={field} />
+        <input value={form.genre} onChange={change("genre")} placeholder="Genre (optional)" className={field} />
+        <Button type="submit">Add</Button>
+      </div>
+      {error && <p className="mt-2 font-mono text-xs text-danger">{error}</p>}
     </form>
   );
 }

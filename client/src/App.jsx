@@ -10,9 +10,9 @@ export default function App() {
     <UsernameProvider>
       <BrowserRouter>
         <UsernameGate>
-          <div className="min-h-screen bg-bg text-text">
+          <div className="min-h-screen">
             <NavBar />
-            <main className="px-4 py-8">
+            <main className="mx-auto max-w-3xl px-5 pb-20">
               <Routes>
                 <Route path="/" element={<MoodPage />} />
                 <Route path="/songs" element={<SongsPage />} />

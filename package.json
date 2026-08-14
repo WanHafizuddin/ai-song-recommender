@@ -8,7 +8,9 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "db:setup": "node db/setup.js",
-    "enrich": "node scripts/enrich-songs.js"
+    "enrich": "node scripts/enrich-songs.js",
+    "dev": "concurrently -n api,web -c blue,magenta \"npm start\" \"npm --prefix client run dev\"",
+    "build": "npm --prefix client install && npm --prefix client run build"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
@@ -16,6 +18,7 @@
     "pg": "^8.14.0"
   },
   "devDependencies": {
+    "concurrently": "^9.0.0",
     "supertest": "^7.0.0",
     "vitest": "^2.1.0"
   }

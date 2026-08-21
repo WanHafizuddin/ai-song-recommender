@@ -10,11 +10,8 @@ const MAX_MOOD_LEN = 500;
 const rerankEnabled = () => process.env.RERANK_ENABLED !== "false";
 
 function fallbackCriteria(moodText) {
-  const tags = moodText
-    .toLowerCase()
-    .split(/\W+/)
-    .filter((w) => w.length > 3)
-    .slice(0, 6);
+  const words = new Set(moodText.toLowerCase().split(/\W+/));
+  const tags = llm.MOOD_TAGS.filter((t) => words.has(t)).slice(0, 6);
   return { genre: null, energy: null, tags };
 }
 
